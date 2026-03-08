@@ -9,15 +9,16 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @Entity
+@Table(name = "expensegroup")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Group {
+public class ExpenseGroup {
 
     @Id
     @GeneratedValue
-    UUID groupId;
-    String name;
+    private UUID groupId;
+    private String name;
 
     @ManyToMany
     @JoinTable(
@@ -25,5 +26,5 @@ public class Group {
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    ArrayList<User> members = new ArrayList<>();
+    private ArrayList<ExpenseUser> members = new ArrayList<>();
 }
